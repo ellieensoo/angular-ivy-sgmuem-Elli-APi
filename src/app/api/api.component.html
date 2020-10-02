@@ -1,2 +1,6 @@
-<input #search />
-<button (click)="startSearch()" >Search!</button>
+<input #search /><br>
+<button (click)="startSearch()" >Search!</button><br>
+<div *ngIf="searchResult">
+  <h2>{{ searchResult.title }}</h2>
+  <p>{{ searchResult.extract }}</p>
+</div>
