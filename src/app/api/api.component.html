@@ -1,11 +1,14 @@
-<input #search /><br>
+<label>Year:</label><input #search ><br>
+<label>Month:</label><input #search1 value="/"><br>
+<label>Day:</label><input #search2 value="/"><br>
+
 <button (click)="startSearch()" >Search!</button><br>
-<div *ngIf="searchResult">
-  <div *ngFor="let result of searchResult.pages">
+<div *ngIf="searchList">
+  <!--<div *ngFor="let result of searchList.tfa">-->
   
-  <h2>{{ result.title }}</h2>
-  <img [src]="getImageUrl(result)" [alt]="result.title">
-  <p>{{ result.extract }}</p>
-  <p>Last modified: {{ result.timestamp | date }}</p>
-  </div>
+  <h2>Last{{ searchList.displaytitle }}</h2>
+  <p>{{ searchList.description }}</p>
+  <!--<img [src]="getImageUrl(result)" [alt]="result.title">-->
+  <!--<p>Last modified: {{ result.timestamp | date }}</p>-->
+  <!--</div>-->
 </div>
