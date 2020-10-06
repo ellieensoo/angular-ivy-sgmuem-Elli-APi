@@ -25,13 +25,13 @@ export class ApiComponent implements OnInit {
   startSearch () {
     const searchTerm = this.searchBox.nativeElement.value + this.searchBox1.nativeElement.value + this.searchBox2.nativeElement.value;
 
-    console.log(searchTerm);//Lihtsal katsetuseks
+    console.log(searchTerm);//Lihtsalt katsetuseks
 
     this.http.get( this.apiUrl + searchTerm ).subscribe((res)=> {
       console.log(res);
       this.searchResult = res;
       this.searchList = this.searchResult.onthisday;
-      this.searchImage = this.searchResult.thumbnail ? this.searchResult.thumbnail.source: undefined;
+      this.searchImage = this.searchResult.image.thumbnail ? this.searchResult.image.thumbnail.source: undefined;
       console.log(this.searchList);
     })
   }
