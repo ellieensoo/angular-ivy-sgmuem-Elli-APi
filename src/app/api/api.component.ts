@@ -30,7 +30,7 @@ export class ApiComponent implements OnInit {
     this.http.get( this.apiUrl + searchTerm ).subscribe((res)=> {
       console.log(res);
       this.searchResult = res;
-      this.searchList = this.searchResult.tfa;
+      this.searchList = this.searchResult.onthisday;
       this.searchImage = this.searchResult.thumbnail ? this.searchResult.thumbnail.source: undefined;
       console.log(this.searchList);
     })
@@ -39,3 +39,6 @@ export class ApiComponent implements OnInit {
     return page.image ? page.image.source: undefined;
   }
 }
+  /*throughArray(){
+
+  }*/
