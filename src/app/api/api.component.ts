@@ -12,6 +12,7 @@ export class ApiComponent implements OnInit {
   searchResult: any;
   searchImage: string;
   searchList: any;
+  
 
   @ViewChild('search') searchBox: ElementRef<HTMLInputElement>;
   @ViewChild('search1') searchBox1: ElementRef<HTMLInputElement>;
@@ -25,7 +26,7 @@ export class ApiComponent implements OnInit {
   startSearch () {
     const searchTerm = this.searchBox.nativeElement.value + this.searchBox1.nativeElement.value + this.searchBox2.nativeElement.value;
 
-    console.log(searchTerm);//Lihtsalt katsetuseks
+    console.log(this.searchList);//Lihtsalt katsetuseks
 
     this.http.get( this.apiUrl + searchTerm ).subscribe((res)=> {
       console.log(res);
@@ -33,12 +34,21 @@ export class ApiComponent implements OnInit {
       this.searchList = this.searchResult.onthisday;
       this.searchImage = this.searchResult.image.thumbnail ? this.searchResult.image.thumbnail.source: undefined;
       console.log(this.searchList);
+
+    for (var i in this.searchList) {
+      console.log("Article" + i);
+      for (var j in this.searchList[i]) 
+        {
+          console.log(" " + this.searchList[i][j]);
+        }
+    }
+
     })
   }
+
   getImageUrl(page){
     return page.image ? page.image.source: undefined;
   }
 }
-  /*throughArray(){
 
-  }*/
+

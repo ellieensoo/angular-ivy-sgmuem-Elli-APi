@@ -6,7 +6,8 @@
 <div *ngIf="searchList">
   <!--<div *ngFor="let result of searchList.tfa">-->
   
-  <h2>Last{{ searchList.pages }}</h2>
+  <p></p>
+  <h2>Last{{ searchList[0].pages[0].description }}</h2>
   <p>{{ searchList[0].text }}</p>
   <img [src]="searchImage" [alt]="searchResult.title">
   <!--<p>Last modified: {{ result.timestamp | date }}</p>-->
