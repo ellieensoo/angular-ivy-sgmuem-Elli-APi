@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiComponent implements OnInit {
 
   apiUrl = 'https://en.wikipedia.org/api/rest_v1/feed/featured/';
+  apiUrl1 = 'https://en.wikipedia.org/api/rest_v1/page/html/';
   searchResult: any;
   searchImage: string;
   searchList: any;
@@ -24,31 +25,23 @@ export class ApiComponent implements OnInit {
   ngOnInit() { }
 
   startSearch () {
-    const searchTerm = this.searchBox.nativeElement.value + this.searchBox1.nativeElement.value + this.searchBox2.nativeElement.value;
-
-    console.log(this.searchList);//Lihtsalt katsetuseks
+    const searchTerm = this.searchBox.nativeElement.value + "/" + this.searchBox1.nativeElement.value + "/" + this.searchBox2.nativeElement.value;
 
     this.http.get( this.apiUrl + searchTerm ).subscribe((res)=> {
       console.log(res);
       this.searchResult = res;
-      this.searchList = this.searchResult.onthisday;
-      this.searchImage = this.searchResult.image.thumbnail ? this.searchResult.image.thumbnail.source: undefined;
-      console.log(this.searchList);
-
-    for (var i in this.searchList) {
-      console.log("Article" + i);
-      for (var j in this.searchList[i]) 
-        {
-          console.log(" " + this.searchList[i][j]);
-        }
-    }
+      this.searchList = this.searchResult.mostread;
+      this.searchImage = this.searchResult.articles.thumbnail.source ? this.searchResult.articles.thumbnail.source: undefined;
+      console.log(this.searchImage);
 
     })
   }
 
-  getImageUrl(page){
-    return page.image ? page.image.source: undefined;
+  getImageUrl(searchResult){
+    return searchResult.arcticles.thumbnail ? searchResult.arcticles.thumbnail: undefined;
   }
+
+
 }
 
 
