@@ -6,12 +6,10 @@
 <div *ngIf="searchList">
   <div *ngFor="let result of searchList.articles">
   
-    <p>{{ result.views }}</p>
     <h2>{{ result.title }}</h2>
     <p>{{ result.description }}</p>
-    <p> {{ result.thumbnail.source }}</p>
-    <!--<a href="#">test<img [src]={{ result.thumbnail }} alt={{ result.title }} /></a>
-    <img [src]="searchImage" [alt]="searchImage">
+    <img src={{result?.thumbnail.source}}>
+    <!--<img [src]="searchImage" [alt]="searchImage">
     <!--<img [src]="getImageUrl(result)" [alt]="result">
     <!--<p>Last modified: {{ result.timestamp | date }}</p>-->
   </div>
