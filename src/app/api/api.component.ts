@@ -31,7 +31,7 @@ export class ApiComponent implements OnInit {
       console.log(res);
       this.searchResult = res;
       this.searchList = this.searchResult.mostread;
-      this.searchImage = this.searchResult.articles ? this.searchResult.articles.thumbnail: undefined;
+      this.searchImage = this.searchResult.articles.thumbnail ? this.searchResult.articles.thumbnail.source: undefined;
       console.log(this.searchImage);
 
     })
