@@ -26,9 +26,6 @@ export class ApiComponent implements OnInit {
   startSearch () {
     const searchTerm = this.searchBox.nativeElement.value + "/" + this.searchBox1.nativeElement.value + "/" + this.searchBox2.nativeElement.value;
 
-    /*const date = Date.now();
-    console.log(date);*/
-
     this.http.get( this.apiUrl + searchTerm ).subscribe((res)=> {
       console.log(res);
       this.searchResult = res;
@@ -42,7 +39,23 @@ export class ApiComponent implements OnInit {
   /*getImageUrl(searchResult){
     return searchResult.arcticles.thumbnail ? searchResult.arcticles.thumbnail: undefined;
   }*/
+  getByDate(){
+    /*const newDate = new Date(Date.now()).getFullYear() + "/" + new Date(Date.now()).getMonth()+ 1 + "/" + new Date(Date.now()).getDate();
+    console.log(newDate);*/
+    const year = new Date(Date.now()).getFullYear();
+    const month = new Date(Date.now()).getMonth()+ 1;
+    const day = new Date(Date.now()).getDate();
 
+    const newDate = year + "/" + month + "/" + day;
+
+     this.http.get( this.apiUrl + newDate ).subscribe((res)=> {
+      console.log(res);
+      this.searchResult = res;
+      this.searchList = this.searchResult.mostread;
+
+    })
+
+  }
 
 }
 

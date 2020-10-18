@@ -2,13 +2,14 @@
 <label>Month:</label><input #search1 ><br>
 <label>Day:</label><input #search2 ><br>
 
-<button (click)="startSearch()" >Search!</button><br>
+<button (click)="startSearch()" >Search!</button>
+<button (click)="getByDate()" >Search by today's date</button><br>
 <div *ngIf="searchList">
-  <div *ngFor="let result of searchList.articles">
+  <div *ngFor="let result of searchList.articles; index as i">
   
-    <a href="{{ result.content_urls.desktop.page }}" target="_blank"><h2>{{ result.title }}</h2></a>
+    <a href="{{ result.content_urls.desktop.page }}" target="_blank"><h2>{{i +" " + result.title }}</h2></a>
     <p>{{ result.description }}</p>
-    <img src="{{ result.thumbnail.source }}">
+    <img *ngIf="result.thumbnail" src="{{ result.thumbnail.source }}">
     <p>Views: {{ result.views }}</p>
     <!--<img [src]="searchImage" [alt]="searchImage">
     <h2>{{ result.title }}</h2>
